@@ -5,6 +5,18 @@
 </ion-navbar>
 
 <ion-content class="home">
-    <h1 text-center>What's the date?</h1>
-    <h1 text-center>{{date}}</h1>
+  <!--Display some text-->
+  <h1 text-center>What's the date?</h1>
+  <!--One way binding-->
+  <h1 text-center>{{date}}</h1>
+  <!--Add default button with a action-->
+  <ion-list>
+    <ion-item>
+      <button default block (click)="doPrompt()">Click Me</button>
+    </ion-item>
+    <ion-item>
+      <!--Conditional display with NgIf-->
+      <h1 text-center *ngIf="winner">The winner is {{winner}}</h1>
+    </ion-item>
+  </ion-list>
 </ion-content>
