@@ -18,5 +18,10 @@
       <!--Conditional display with NgIf-->
       <h1 text-center *ngIf="winner">The winner is {{winner}}</h1>
     </ion-item>
+    <ion-item>
+      <button [navPush]="cameraPage">Go To Camera</button>
+      <!--We can use click action & navigation controller-->
+      <button (click)="goToCamera()">Go To Camera</button>
+    </ion-item>
   </ion-list>
 </ion-content>

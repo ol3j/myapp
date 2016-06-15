@@ -2,12 +2,17 @@ import * as moment from 'moment';
 import {Component} from "@angular/core";
 //Add alert
 import {Alert, NavController} from 'ionic-angular';
+//Add camera page 
+import {CameraPage} from '../camera/camera';
 
 
 @Component({
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
+  //define camera page as a field
+  cameraPage = CameraPage;
+
   date:string;
   winner: string;
 
@@ -44,5 +49,10 @@ export class HomePage {
 
     //The present method is used by overlays, present will place the overlay in the root NavController's stack. 
     this._navController.present(prompt);
+  }
+
+  //The actions goes to CameraPage
+  goToCamera(){
+    this._navController.push(this.cameraPage);
   }
 }
