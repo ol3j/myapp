@@ -1,10 +1,9 @@
 <ion-navbar *navbar>
   <ion-title>Camera</ion-title>
 </ion-navbar>
-
 <ion-content padding class="camera">
   <p>
-      Hello, this is my camera page
+    Hello, this is my camera page
   </p>
   <ion-card>
     <ion-card-content>
@@ -17,3 +16,10 @@
     </ion-item>
   </ion-list>
 </ion-content>
+<ion-toolbar position="bottom">
+  <ion-buttons left>
+    <button danger (click)="goToHome()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>

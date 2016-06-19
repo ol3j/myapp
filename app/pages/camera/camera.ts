@@ -29,4 +29,8 @@ export class CameraPage {
         this.nav.present(alert);
       });
   }
+
+  goToHome(){
+    this.nav.pop();
+  }
 }
