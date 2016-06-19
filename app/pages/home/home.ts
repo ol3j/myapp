@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 //Add alert
 import {Alert, NavController} from 'ionic-angular';
 //Add camera page 
@@ -13,13 +13,34 @@ export class HomePage {
   //define camera page as a field
   cameraPage = CameraPage;
 
-  date:string;
+  date: string;
   winner: string;
 
   constructor(private _navController: NavController) {
     this.date = moment().add("days", 7).format("dd/MM/YYYY");
   }
 
+  ngOnInit() {
+    console.log("ng on init");
+  }
+
+  //Runs when the page has loaded. This event only happens once per page being created and added to the DOM.
+  ionViewLoaded() {
+    console.log("I'm loaded");
+  }
+  //Runs when the page is about to leave and no longer be the active page.
+  ionViewWillLeave() {
+    console.log("I'm about to leave :(");
+  }
+
+  ionViewWillEnter() {
+    console.log("will enter");
+  }
+  //Runs when the page has fully entered and is now the active page. This event will fire, whether it was the first load or a cached page.
+  ionViewDidEnter() {
+    console.log("did enter");
+
+  }
   //add a action
   doPrompt() {
     let prompt = Alert.create({
@@ -52,7 +73,7 @@ export class HomePage {
   }
 
   //The actions goes to CameraPage
-  goToCamera(){
+  goToCamera() {
     this._navController.push(this.cameraPage);
   }
 }
