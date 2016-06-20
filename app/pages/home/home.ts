@@ -8,7 +8,7 @@ import {CameraPage} from '../camera/camera';
 import {Platform, PlatformVersion} from 'ionic-angular';
 //Import my-platform component
 import {MyPlatform} from '../../components/my-platform.component';
-
+import {WeatherPage} from '../weather/weather';
 
 @Component({
   templateUrl: 'build/pages/home/home.html',
@@ -17,7 +17,8 @@ import {MyPlatform} from '../../components/my-platform.component';
 export class HomePage {
   //define camera page as a field
   cameraPage = CameraPage;
-
+  weaterPage = WeatherPage;
+  
   date: string;
   winner: string;
   platform: Platform;

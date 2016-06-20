@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
   http://openweathermap.org/current
   http://openweathermap.org/find
   API KEY(appid)=753437e14874953dddba35177635d1d1
-
+  http://ionicframework.com/docs/v2/native/geolocation/
 */
 @Injectable()
 export class WeatherService {
