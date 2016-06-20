@@ -6,6 +6,7 @@ import {Toast, Alert, NavController} from 'ionic-angular';
 import {CameraPage} from '../camera/camera';
 //Add Platform namespace
 import {Platform, PlatformVersion} from 'ionic-angular';
+//Import my-platform component
 import {MyPlatform} from '../../components/my-platform.component';
 
 
