@@ -1,14 +1,17 @@
 import * as moment from 'moment';
 import {Component, OnInit} from "@angular/core";
 //Add alert
-import {Alert, NavController} from 'ionic-angular';
+import {Toast, Alert, NavController} from 'ionic-angular';
 //Add camera page 
 import {CameraPage} from '../camera/camera';
 //Add Platform namespace
 import {Platform, PlatformVersion} from 'ionic-angular';
+import {MyPlatform} from '../../components/my-platform.component';
+
 
 @Component({
-  templateUrl: 'build/pages/home/home.html'
+  templateUrl: 'build/pages/home/home.html',
+  directives: [MyPlatform]
 })
 export class HomePage {
   //define camera page as a field
@@ -17,12 +20,10 @@ export class HomePage {
   date: string;
   winner: string;
   platform: Platform;
-  platforms: Array<string>;
-  version: string;
 
   constructor(private _navController: NavController, platform: Platform) {
     this.date = moment().add("days", 7).format("dd/MM/YYYY");
-    this.platform = platform;   
+    this.platform = platform;
   }
 
   ngOnInit() {
@@ -32,9 +33,6 @@ export class HomePage {
   //Runs when the page has loaded. This event only happens once per page being created and added to the DOM.
   ionViewLoaded() {
     console.log("I'm loaded");
-    
-    //get infomartion about platform
-    this.platforms = this.platform.platforms();
   }
 
   //Runs when the page is about to leave and no longer be the active page.
@@ -86,11 +84,17 @@ export class HomePage {
     this._navController.push(this.cameraPage);
   }
 
-  getVersion(){
-    let ver = "none" //get information about os versions
-    let version = this.platform.versions();
-  }
-
   checkPlatform() {
+    let res = "android"
+    if (this.platform.is("ios")) {
+      res = "ios";
+    }
+
+    let toast = Toast.create({
+      message: res,
+      duration: 3000
+    });
+
+    this._navController.present(toast);
   }
 }
