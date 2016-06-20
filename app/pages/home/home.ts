@@ -4,7 +4,8 @@ import {Component, OnInit} from "@angular/core";
 import {Alert, NavController} from 'ionic-angular';
 //Add camera page 
 import {CameraPage} from '../camera/camera';
-
+//Add Platform namespace
+import {Platform, PlatformVersion} from 'ionic-angular';
 
 @Component({
   templateUrl: 'build/pages/home/home.html'
@@ -15,9 +16,13 @@ export class HomePage {
 
   date: string;
   winner: string;
+  platform: Platform;
+  platforms: Array<string>;
+  version: string;
 
-  constructor(private _navController: NavController) {
+  constructor(private _navController: NavController, platform: Platform) {
     this.date = moment().add("days", 7).format("dd/MM/YYYY");
+    this.platform = platform;   
   }
 
   ngOnInit() {
@@ -27,7 +32,11 @@ export class HomePage {
   //Runs when the page has loaded. This event only happens once per page being created and added to the DOM.
   ionViewLoaded() {
     console.log("I'm loaded");
+    
+    //get infomartion about platform
+    this.platforms = this.platform.platforms();
   }
+
   //Runs when the page is about to leave and no longer be the active page.
   ionViewWillLeave() {
     console.log("I'm about to leave :(");
@@ -75,5 +84,13 @@ export class HomePage {
   //The actions goes to CameraPage
   goToCamera() {
     this._navController.push(this.cameraPage);
+  }
+
+  getVersion(){
+    let ver = "none" //get information about os versions
+    let version = this.platform.versions();
+  }
+
+  checkPlatform() {
   }
 }

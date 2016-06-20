@@ -3,7 +3,14 @@
     Ionic1/2 Workshop
   </ion-title>
 </ion-navbar>
-
+<toolbar>
+    <div showWhen="android">
+    I am visible on Android!
+  </div>
+  <div showWhen="ios">
+    I am visible on iOS!
+  </div>
+</toolbar>
 <ion-content class="home">
   <!--Display some text-->
   <h1 text-center>What's the date?</h1>
@@ -25,3 +32,6 @@
     </ion-item>
   </ion-list>
 </ion-content>
+<toolbar position="bottom">
+  <p>Platforms {{platforms}}</p>
+</toolbar>
