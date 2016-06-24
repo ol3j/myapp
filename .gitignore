@@ -1,0 +1,5 @@
+typings/
+plugins/
+.vscode/
+www/build/
+resources/
