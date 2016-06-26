@@ -1,15 +1,32 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
+// import WeatherService
+import {WeatherService} from '../../providers/weather-service/weather-service';
 
-/*
-  Generated class for the WeatherPage page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/weather/weather.html',
+  // add WeatherService to providers
+  providers:[WeatherService]
 })
+
 export class WeatherPage {
-  constructor(public nav: NavController) {}
+  
+  info:string;
+
+  //inject weatherService
+  constructor(public nav: NavController, public weatherService: WeatherService) {
+    this.weatherService = weatherService;
+  }
+
+  // load data when view is loaded
+  ionViewLoaded() {
+      //execute getInfo
+      this.weatherService.getInfo().subscribe((data:any) => {
+      this.info = data;
+      console.log(data);
+    }, 
+    error => console.log(error),
+    () => console.log('Get info complete'));
+  }
 }
