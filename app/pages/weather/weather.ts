@@ -12,6 +12,7 @@ import {WeatherService} from '../../providers/weather-service/weather-service';
 
 export class WeatherPage {
   
+  // define a field
   info:string;
 
   //inject weatherService
@@ -19,7 +20,7 @@ export class WeatherPage {
     this.weatherService = weatherService;
   }
 
-  // load data when view is loaded
+  // 8/ load data when view is loaded
   ionViewLoaded() {
       //execute getInfo
       this.weatherService.getInfo().subscribe((data:any) => {

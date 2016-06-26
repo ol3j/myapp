@@ -19,13 +19,11 @@ import {Configuration} from '../../configuration'
 // mark as injectable
 @Injectable()
 export class WeatherService {
-  data: any = null;
-  city:string;
 
   //inject configuration
   constructor(private http: Http, private configuration: Configuration) {}
 
-  // simple action
+  // 4/ simple action
   getInfo () {
      let req = this.configuration.ServerWithApiUrl + "?q=Poznan,pl&units=metric&appid=" + this.configuration.API_KEY;
      return this.http.get(req).map(res => res.json());
